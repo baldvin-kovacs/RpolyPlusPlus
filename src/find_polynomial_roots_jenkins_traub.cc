@@ -170,7 +170,7 @@ bool HasConverged(const T& sequence) {
 // Royal Society open science (2014)
 template <typename T>
 bool HasRootConverged(const std::vector<T>& roots) {
-  static const double kRootMagnitudeTolerance = 1e-8;
+  static constexpr double kRootMagnitudeTolerance = 1e-8;
   if (roots.size() != 3) {
     return false;
   }
@@ -297,33 +297,33 @@ class JenkinsTraubSolver {
   bool attempted_quadratic_shift_;
 
   // Number of zero-shift iterations to perform.
-  static const int kNumZeroShiftIterations = 20;
+  static constexpr int kNumZeroShiftIterations = 20;
 
   // The number of fixed shift iterations is computed as
   //   # roots found * this multiplier.
-  static const int kFixedShiftIterationMultiplier = 20;
+  static constexpr int kFixedShiftIterationMultiplier = 20;
 
   // If the fixed shift iterations fail to converge, we restart this many times
   // before considering the solve attempt as a failure.
-  static const int kMaxFixedShiftRestarts = 20;
+  static constexpr int kMaxFixedShiftRestarts = 20;
 
   // The maximum number of linear shift iterations to perform before considering
   // the shift as a failure.
-  static const int kMaxLinearShiftIterations = 20;
+  static constexpr int kMaxLinearShiftIterations = 20;
 
   // The maximum number of quadratic shift iterations to perform before
   // considering the shift as a failure.
-  static const int kMaxQuadraticShiftIterations = 20;
+  static constexpr int kMaxQuadraticShiftIterations = 20;
 
   // When quadratic shift iterations are stalling, we attempt a few fixed shift
   // iterations to help convergence.
-  static const int kInnerFixedShiftIterations = 5;
+  static constexpr int kInnerFixedShiftIterations = 5;
 
   // During quadratic iterations, the real values of the root pairs should be
   // nearly equal since the root pairs are complex conjugates. This tolerance
   // measures how much the real values may diverge before consider the quadratic
   // shift to be failed.
-  static const double kRootPairTolerance = 0.01;
+  static constexpr double kRootPairTolerance = 0.01;
 };
 
 bool JenkinsTraubSolver::ExtractRoots() {
@@ -729,8 +729,8 @@ bool JenkinsTraubSolver::SolveClosedFormPolynomial() {
 // The unique positive zero of this polynomial is an approximate lower bound of
 // the radius of zeros of the original polynomial.
 double JenkinsTraubSolver::ComputeRootRadius() {
-  static const double kEpsilon = 1e-2;
-  static const int kMaxIterations = 100;
+  static constexpr double kEpsilon = 1e-2;
+  static constexpr int kMaxIterations = 100;
 
   VectorXd poly = polynomial_;
   // Take the absolute value of all coefficients.
